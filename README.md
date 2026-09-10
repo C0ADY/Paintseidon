@@ -1,123 +1,100 @@
 # Paintseidon — Website
 
-A Greek-temple themed one-page website for a painting & decorating business,
-built as plain HTML/CSS/JS so it can be hosted for free on **GitHub Pages**.
+A Greek-temple themed one-page website for Paintseidon, a painting and
+decorating business serving the Fargo/Moorhead area. Plain HTML/CSS/JS, so
+it can be hosted for free on **GitHub Pages** with nothing to configure.
 
 The quote form doesn't use a server — it opens the visitor's own email app
-with their details pre-filled, addressed to your business email. There's
-nothing to host, configure, or pay for beyond GitHub Pages itself.
+with their details pre-filled, addressed to the business email.
 
-## 1. Before you publish — replace the placeholders
+## Business details currently in the site
 
-Every place you need to edit is wrapped in square brackets, e.g. `[Phone
-Number]`. Open the project in any text editor and use **Find & Replace**
-(or your editor's "search across files") to swap each one out.
-
-The business name is already set throughout the site to **Paintseidon**.
-The remaining placeholders are still to fill in — open `index.html` and
-replace:
-
-| Placeholder | Replace with |
+| Detail | Value |
 |---|---|
-| `[Phone Number]` (text) and `[PHONE NUMBER]` (in `tel:` links) | His contact number, e.g. text `07123 456789` and link `tel:+447123456789` |
-| `[email@example.com]` | The email address he wants quote requests sent to |
-| `[Town / Service Area]` | The town/area he covers, e.g. "Leeds and the surrounding area" |
-| `[X]` / `[X]+` | Years of experience |
-| `[Facebook URL]` / `[Instagram URL]` | His social media links, or delete those `<p>` lines in the footer if he doesn't have any |
-| `[Mon–Fri: 8am–6pm]` / `[Sat: By appointment]` | Real working hours |
-| The About section paragraph starting "[Add a short paragraph…]" | A couple of sentences about him/his experience |
-| The testimonial placeholders | Real customer quotes, once he has some (or delete the section) |
+| Phone | (701) 970-9115 (`tel:+17019709115`) |
+| Email | paintseidonllc@gmail.com |
+| Service area | Fargo, ND · Moorhead, MN · surrounding areas |
+| Trading since | 2010 |
+| Services | Interior painting · Exterior painting · Staining & wallcoverings · Power washing |
 
-**Also update `js/script.js`:** near the top of the file there's a line:
+If the phone or email ever changes, note that the email appears in **two**
+places and both must be updated together:
 
-```js
-var QUOTE_RECIPIENT_EMAIL = "email@example.com";
-```
+1. `index.html` — the visible text in the quote section and footer.
+2. `js/script.js` — the `QUOTE_RECIPIENT_EMAIL` line near the top. This is
+   the one that actually controls where quote requests are sent.
 
-Change `"email@example.com"` to the real business email — this is what
-actually controls where quote requests go (the visible text in `index.html`
-is just for display).
+## Still to add
 
-## 2. Add real photos
+Three things are written but switched off, because there was no real
+content for them yet. Each is preserved as an HTML comment with
+instructions for switching it back on:
 
-The gallery section currently shows six dashed placeholder boxes. To use
-real photos of finished jobs:
+- **Gallery** — six photo slots, commented out in `index.html`. Add JPGs to
+  `images/`, swap each `gallery-placeholder` div for an `<img>`, uncomment
+  the section, and put the `Gallery` link back in the header nav.
+- **Reviews** — three testimonial cards, commented out in `index.html`.
+  Replace the quotes and names with real ones, uncomment, and restore the
+  `Reviews` nav link.
+- **Opening hours and social links** — commented out inside the footer.
+  Fill in the real hours and profile URLs, then uncomment.
 
-1. Add your image files (JPG or PNG, ideally under ~500KB each — resize/compress
-   large phone photos first) into the `images/` folder, e.g. `images/job-1.jpg`.
-2. In `index.html`, find each gallery block that looks like this:
+## Adding photos
 
-   ```html
-   <figure class="gallery-item">
-     <div class="gallery-placeholder"><span>Add Photo</span></div>
-     <figcaption>[Project description]</figcaption>
-   </figure>
-   ```
-
-3. Replace the placeholder `<div>` with an `<img>` tag, and fill in the caption:
+1. Put image files (JPG or PNG, ideally under ~500KB each — resize large
+   phone photos first) into `images/`, e.g. `images/job-1.jpg`.
+2. In the commented-out gallery block, replace:
 
    ```html
-   <figure class="gallery-item">
-     <img src="images/job-1.jpg" alt="Repainted living room in Anytown">
-     <figcaption>Living room repaint, Anytown</figcaption>
-   </figure>
+   <div class="gallery-placeholder"><span>Add Photo</span></div>
+   <figcaption>Project description</figcaption>
    ```
 
-Repeat for as many photos as you have — you can add more `<figure>` blocks
-than the original six, or remove unused ones.
+   with:
 
-A real photo of the painter, or a logo, can replace `images/column-icon.svg`
-in the header/footer/about section the same way.
-
-## 3. Test it locally (optional but recommended)
-
-You don't need any special software. Just open `index.html` in a web
-browser by double-clicking it, and click through the site and the quote
-form to check everything looks right and the email opens correctly.
-
-## 4. Publish on GitHub Pages
-
-1. Create a new repository on GitHub (e.g. `painting-website`) — it can be
-   public or private, but GitHub Pages on a free account requires the
-   repository to be **public**.
-2. Upload every file and folder from this package into the root of that
-   repository, keeping the folder structure intact:
-
-   ```
-   index.html
-   css/style.css
-   js/script.js
-   images/…
-   README.md
+   ```html
+   <img src="images/job-1.jpg" alt="Repainted living room in Fargo">
+   <figcaption>Living room repaint, Fargo</figcaption>
    ```
 
-   Easiest way: on the repository's GitHub page, click **Add file → Upload
-   files**, then drag the whole contents of this folder in and commit.
+3. Uncomment the section and restore the nav link.
 
-3. In the repository, go to **Settings → Pages**.
-4. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-5. Under **Branch**, choose `main` (or `master`) and folder `/ (root)`, then
-   **Save**.
-6. GitHub will publish the site at a URL like:
+## Test it locally
 
-   ```
-   https://<your-github-username>.github.io/<repository-name>/
-   ```
+Open `index.html` in a browser by double-clicking it. Click through the
+site and submit the quote form to check the email opens correctly.
 
-   This can take a minute or two the first time. Refresh the Pages settings
-   page until it shows the live link.
+## Publish on GitHub Pages
 
-7. Optional: to use your own domain (e.g. `www.yourbusiness.co.uk`) instead
-   of the github.io address, see GitHub's guide on
+1. Upload every file and folder to the root of the repository, keeping the
+   structure intact (`index.html`, `css/`, `js/`, `images/`, `README.md`).
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+4. Under **Branch**, choose `main` and folder `/ (root)`, then **Save**.
+5. The site publishes at `https://<username>.github.io/<repository-name>/`
+   within a minute or two.
+6. Optional: to use a custom domain, see GitHub's guide on
    [custom domains for GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
-## 5. Updating the site later
+Pages republishes automatically within a minute or two of any change
+landing on the configured branch.
 
-Any time you want to change something, edit the file (`index.html`,
-`css/style.css`, etc.), then upload the changed file to the same GitHub
-repository (or use `git push` if you're comfortable with Git) — GitHub
-Pages automatically republishes within a minute or two of a change landing
-on the branch you configured in step 4.
+## Design notes
+
+Colours are defined once as custom properties at the top of
+`css/style.css`. Two of them are contrast-sensitive:
+
+- `--gold-bright` (#d4af37) is for text on **dark** backgrounds only.
+- `--gold-deep` (#7a5f10) is for text on **light** backgrounds.
+- `--gold` (#c8a24a) is decorative only — borders and rules. It is too pale
+  to use for text on the marble background (2.1:1).
+
+The hero has a gradient scrim (`.hero::after`) between the temple
+illustration and the copy. The illustration is drawn in near-white marble,
+so text placed over it unscrimmed drops to about 1.1:1 and becomes
+unreadable. If you change the hero artwork, keep the scrim.
+
+All text on the page meets WCAG AA (4.5:1) against its background.
 
 ## File structure
 
