@@ -290,7 +290,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 /* ---------- key divider ---------- */
 .key-divider {
   height: 22px;
-  background-image: url("../images/greek-key.svg");
+  background-image: url("greek-key.svg");
   background-repeat: repeat-x;
   background-position: left center;
   background-size: 22px 22px;
