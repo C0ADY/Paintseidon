@@ -1,5 +1,5 @@
 /* =========================================================
-   [Business Name] — site behaviour
+   Paintseidon — site behaviour
    1. Mobile navigation toggle
    2. Footer copyright year
    3. Quote form -> pre-filled mailto: submission

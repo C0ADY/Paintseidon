@@ -1,4 +1,4 @@
-# [Business Name] — Website
+# Paintseidon — Website
 
 A Greek-temple themed one-page website for a painting & decorating business,
 built as plain HTML/CSS/JS so it can be hosted for free on **GitHub Pages**.
@@ -9,15 +9,16 @@ nothing to host, configure, or pay for beyond GitHub Pages itself.
 
 ## 1. Before you publish — replace the placeholders
 
-Every place you need to edit is wrapped in square brackets, e.g. `[Business
-Name]`. Open the project in any text editor and use **Find & Replace**
+Every place you need to edit is wrapped in square brackets, e.g. `[Phone
+Number]`. Open the project in any text editor and use **Find & Replace**
 (or your editor's "search across files") to swap each one out.
 
-Open `index.html` and replace:
+The business name is already set throughout the site to **Paintseidon**.
+The remaining placeholders are still to fill in — open `index.html` and
+replace:
 
 | Placeholder | Replace with |
 |---|---|
-| `[Business Name]` | Your brother's trading name (appears ~10 times) |
 | `[Phone Number]` (text) and `[PHONE NUMBER]` (in `tel:` links) | His contact number, e.g. text `07123 456789` and link `tel:+447123456789` |
 | `[email@example.com]` | The email address he wants quote requests sent to |
 | `[Town / Service Area]` | The town/area he covers, e.g. "Leeds and the surrounding area" |
