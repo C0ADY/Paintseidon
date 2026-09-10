@@ -26,22 +26,29 @@ places and both must be updated together:
 
 ## The logo
 
-The header, About section and footer all reference **`logo.png`** in the
-repository root. That file is not in version control - add the logo
-artwork there under exactly that name.
+`logo.png` is the full lockup: the illustration sits at x209 y77, 664x404,
+above the wordmark, in a 1079x633 image. Its white background has been
+flood-filled to transparency from the edges, so white inside the figure
+and the wave highlights is preserved.
 
-Because the supplied artwork has a white background, it is handled two
-different ways:
+It is used two different ways, because the artwork's own wordmark is navy
+and would disappear against the navy bars:
 
-- On the navy header and footer it sits on an explicit white plate
-  (`.brand-logo`, `.footer-logo` in `style.css`), so it reads as a badge
-  rather than a stray white rectangle.
-- In the About section it uses `mix-blend-mode: multiply`, which blends the
-  white ground away against the marble background.
+- **Header and footer** crop to the illustration only, via `.logo-mark`,
+  and pair it with the Cinzel wordmark in marble. The crop is driven by a
+  `--mark-h` custom property, so changing the size needs one number.
+- **About section** uses the whole lockup, wordmark included, since the
+  marble background gives the navy type plenty of contrast.
 
-If a transparent-background version is ever available, drop the
-`background` and `padding` from `.brand-logo` and `.footer-logo`, and the
-`mix-blend-mode` from `.about-figure img`.
+If the artwork is ever re-exported, the crop numbers in `.logo-mark` are
+tied to that 1079x633 source and will need recalculating.
+
+## Cache busting
+
+`index.html` loads `style.css?v=N` and `script.js?v=N`. **Bump N whenever
+either file changes.** GitHub Pages sends long cache lifetimes, so without
+a new query string returning visitors keep the old copy and see new markup
+against an old stylesheet.
 
 ## Social links
 

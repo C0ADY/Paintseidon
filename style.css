@@ -145,18 +145,28 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   text-decoration: none;
 }
 .brand-icon { width: 30px; height: auto; filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg); }
-/* The logo artwork has a white ground, so on the navy bars it gets an
-   explicit white plate rather than appearing as a stray white rectangle.
-   If a transparent-background version is ever supplied, drop the
-   background/padding here and in .footer-logo. */
-.brand-logo {
-  height: 54px;
-  width: auto;
-  background: #fff;
-  padding: 5px 10px;
-  border-radius: var(--radius);
+/* logo.png is the full lockup: illustration (x209 y77, 664x404) above the
+   wordmark, in a 1079x633 image. On the navy bars the artwork's own navy
+   wordmark would disappear, so we crop to just the illustration and pair
+   it with the Cinzel wordmark in marble. Set --mark-h to size it. */
+.logo-mark {
+  position: relative;
   display: block;
+  flex: none;
+  overflow: hidden;
+  width: calc(var(--mark-h) * 664 / 404);
+  height: var(--mark-h);
 }
+.logo-mark img {
+  position: absolute;
+  max-width: none;
+  width: calc(var(--mark-h) * 1079 / 404);
+  height: auto;
+  left: calc(var(--mark-h) * -209 / 404);
+  top: calc(var(--mark-h) * -77 / 404);
+}
+.brand .logo-mark { --mark-h: 44px; }
+.footer-brand .logo-mark { --mark-h: 52px; }
 .brand .brand-name, .footer-brand .brand-name {
   color: var(--marble);
   font-size: 1.2rem;
@@ -403,14 +413,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   transform: rotate(45deg);
 }
 .about-figure { justify-self: center; }
-/* On the marble background, multiply blends the logo's white ground away
-   instead of showing it as a white rectangle. This only works over light
-   backgrounds - the navy header and footer use a white plate instead. */
-.about-figure img {
-  width: 100%;
-  max-width: 260px;
-  mix-blend-mode: multiply;
-}
+.about-figure img { width: 100%; max-width: 260px; }
 
 /* ---------- testimonials ---------- */
 .testimonials { background: var(--navy-light); color: var(--marble); }
@@ -506,15 +509,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 }
 .footer-brand { display: flex; flex-direction: column; gap: 8px; }
 .footer-brand .brand-icon-light { width: 26px; filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg); margin-bottom: 4px; }
-.footer-logo {
-  height: 66px;
-  width: auto;
-  background: #fff;
-  padding: 6px 12px;
-  border-radius: var(--radius);
-  align-self: flex-start;
-  margin-bottom: 4px;
-}
+
 .footer-brand p { color: #a9b0be; font-size: 0.9rem; }
 .footer-col h3 {
   color: var(--gold-bright);
