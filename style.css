@@ -145,6 +145,18 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   text-decoration: none;
 }
 .brand-icon { width: 30px; height: auto; filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg); }
+/* The logo artwork has a white ground, so on the navy bars it gets an
+   explicit white plate rather than appearing as a stray white rectangle.
+   If a transparent-background version is ever supplied, drop the
+   background/padding here and in .footer-logo. */
+.brand-logo {
+  height: 54px;
+  width: auto;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  display: block;
+}
 .brand .brand-name, .footer-brand .brand-name {
   color: var(--marble);
   font-size: 1.2rem;
@@ -364,7 +376,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 /* ---------- about ---------- */
 .about-inner {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1.15fr;
   gap: 56px;
   align-items: center;
 }
@@ -390,8 +402,15 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   background: var(--gold-deep);
   transform: rotate(45deg);
 }
-.about-figure { opacity: 0.85; justify-self: center; }
-.about-figure img { width: 100px; }
+.about-figure { justify-self: center; }
+/* On the marble background, multiply blends the logo's white ground away
+   instead of showing it as a white rectangle. This only works over light
+   backgrounds - the navy header and footer use a white plate instead. */
+.about-figure img {
+  width: 100%;
+  max-width: 260px;
+  mix-blend-mode: multiply;
+}
 
 /* ---------- testimonials ---------- */
 .testimonials { background: var(--navy-light); color: var(--marble); }
@@ -480,13 +499,22 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .site-footer { background: var(--navy); color: var(--marble-dark); padding-top: 56px; }
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 32px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(245,240,230,0.15);
 }
 .footer-brand { display: flex; flex-direction: column; gap: 8px; }
 .footer-brand .brand-icon-light { width: 26px; filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg); margin-bottom: 4px; }
+.footer-logo {
+  height: 66px;
+  width: auto;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
 .footer-brand p { color: #a9b0be; font-size: 0.9rem; }
 .footer-col h3 {
   color: var(--gold-bright);
@@ -497,6 +525,18 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   margin-bottom: 12px;
 }
 .footer-col p { margin: 0 0 8px; font-size: 0.92rem; }
+.social-list { list-style: none; margin: 0; padding: 0; }
+.social-list li { margin-bottom: 10px; }
+.social-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--marble-dark);
+  font-size: 0.92rem;
+}
+.social-list a:hover { color: var(--gold-bright); }
+.social-list svg { flex: none; }
 .footer-col a { text-decoration: none; color: var(--marble-dark); }
 .footer-col a:hover { color: var(--gold-bright); }
 .footer-bottom {
@@ -532,6 +572,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   .main-nav .nav-cta { display: inline-block; margin-top: 8px; }
   .nav-toggle { display: flex; }
   .header-phone span { display: none; }
+  .brand-logo { height: 44px; padding: 4px 8px; }
 }
 
 @media (max-width: 560px) {

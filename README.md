@@ -24,6 +24,44 @@ places and both must be updated together:
 2. `js/script.js` — the `QUOTE_RECIPIENT_EMAIL` line near the top. This is
    the one that actually controls where quote requests are sent.
 
+## The logo
+
+The header, About section and footer all reference **`logo.png`** in the
+repository root. That file is not in version control - add the logo
+artwork there under exactly that name.
+
+Because the supplied artwork has a white background, it is handled two
+different ways:
+
+- On the navy header and footer it sits on an explicit white plate
+  (`.brand-logo`, `.footer-logo` in `style.css`), so it reads as a badge
+  rather than a stray white rectangle.
+- In the About section it uses `mix-blend-mode: multiply`, which blends the
+  white ground away against the marble background.
+
+If a transparent-background version is ever available, drop the
+`background` and `padding` from `.brand-logo` and `.footer-logo`, and the
+`mix-blend-mode` from `.about-figure img`.
+
+## Social links
+
+The footer's Follow column links to Facebook, Instagram, LinkedIn and
+Pinterest. Mobile share parameters (`utm_*`, `mibextid`, `stkn`) were
+stripped from the supplied URLs - they are analytics tokens, not part of
+the address.
+
+Two of the four are share links rather than canonical profile URLs:
+
+- Facebook points at `/share/1FAfm7LTqD/`, which redirects to the page.
+- Pinterest points at a `pin.it` short link.
+
+Both work, but they depend on a redirect staying alive. If the canonical
+URLs are available (the address shown when visiting the profile in a
+desktop browser), prefer those.
+
+The LinkedIn link goes to a personal profile, not a company page. If a
+Paintseidon company page is created later, swap that URL.
+
 ## Still to add
 
 Three things are written but switched off, because there was no real
