@@ -3,18 +3,26 @@
    ========================================================= */
 
 :root {
-  --navy: #12213b;
-  --navy-light: #1b3a63;
-  --marble: #f5f0e6;
-  --marble-dark: #e9e2d0;
-  --gold: #c8a24a;          /* decorative only - too pale for text on light */
-  --gold-bright: #d4af37;   /* text gold, dark backgrounds only */
-  --gold-deep: #7a5f10;     /* text gold for light backgrounds (AA on marble/white) */
+  --navy: #1b3a5f;          /* header, footer, hero ground */
+  --navy-deep: #122843;     /* depth in gradients */
+  --navy-light: #2d6496;    /* lighter blue for accents */
+  --sky: #9fd0ef;           /* pale blue picked from the logo */
+  --marble: #f2f7fc;        /* bright cool page ground */
+  --marble-dark: #dfeaf5;
+  --panel: #e9f1f9;         /* tinted panel on light sections */
+  --gold: #d4af37;          /* decorative only - too pale for text on light */
+  --gold-bright: #e8c765;   /* text gold, dark backgrounds only */
+  --gold-deep: #7a5f10;     /* text gold for light backgrounds (AA) */
   --terracotta: #9c5314;
-  --ink: #22262f;
+  --ink: #1b2430;
+  --muted: #4a5568;         /* secondary text on light */
+  --muted-soft: #565f70;    /* small print on light */
+  --muted-dark: #b9c6d6;    /* secondary text on navy */
+  --muted-dark-soft: #9fb0c4;
   --max-width: 1160px;
   --radius: 6px;
-  --shadow: 0 10px 30px rgba(18, 33, 59, 0.12);
+  --radius-lg: 18px;
+  --shadow: 0 10px 30px rgba(27, 58, 95, 0.10);
   --font-head: "Cinzel", "Georgia", serif;
   --font-body: "Jost", "Segoe UI", Arial, sans-serif;
 }
@@ -81,7 +89,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .section-sub {
   max-width: 640px;
   margin: -8px auto 40px;
-  color: #4b5160;
+  color: var(--muted);
 }
 
 :focus-visible {
@@ -99,7 +107,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .btn {
   display: inline-block;
   padding: 14px 30px;
-  border-radius: var(--radius);
+  border-radius: 999px;
   font-family: var(--font-body);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -115,11 +123,11 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 }
 .btn-gold:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn-outline {
-  background: rgba(18, 33, 59, 0.55);
+  background: rgba(27, 58, 95, 0.55);
   border-color: var(--marble);
   color: var(--marble);
 }
-.btn-outline:hover { background: rgba(245,240,230,0.12); }
+.btn-outline:hover { background: rgba(242,247,252,0.12); }
 .btn-wide { width: 100%; text-align: center; font-size: 1.05rem; padding: 16px; }
 
 /* ---------- header ---------- */
@@ -172,6 +180,23 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   font-size: 1.2rem;
   margin: 0;
 }
+.header-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+}
+.phone-label {
+  display: inline-block;
+  min-width: 46px;
+  margin-right: 8px;
+  color: var(--muted-dark);
+  font-weight: 500;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.footer-col .phone-label { min-width: 52px; }
 .header-phone {
   display: flex;
   align-items: center;
@@ -180,6 +205,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   text-decoration: none;
   font-weight: 600;
   white-space: nowrap;
+  font-size: 0.95rem;
 }
 
 .main-nav ul {
@@ -241,7 +267,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   opacity: 0.9;
 }
 /* Scrim between the illustration and the copy. The temple is drawn in
-   marble (#f5f0e6), so unscrimmed text over it fell to ~1.1:1. Weighted
+   marble (var(--marble)), so unscrimmed text over it fell to ~1.1:1. Weighted
    towards the bottom, where the pale stonework actually sits. */
 .hero::after {
   content: "";
@@ -251,10 +277,10 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(18, 33, 59, 0.30) 0%,
-    rgba(18, 33, 59, 0.55) 35%,
-    rgba(18, 33, 59, 0.80) 58%,
-    rgba(18, 33, 59, 0.90) 100%
+    rgba(27, 58, 95, 0.42) 0%,
+    rgba(27, 58, 95, 0.66) 28%,
+    rgba(27, 58, 95, 0.84) 48%,
+    rgba(27, 58, 95, 0.92) 100%
   );
 }
 .hero-inner {
@@ -284,8 +310,11 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 10px;
+  gap: 10px;
   justify-content: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0;
   margin: 0;
   font-size: 0.85rem;
@@ -296,8 +325,8 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .hero-badges li {
   position: relative;
   padding: 6px 14px 6px 28px;
-  background: rgba(18, 33, 59, 0.88);
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(27, 58, 95, 0.88);
+  border: 1px solid rgba(232, 199, 101, 0.5);
   border-radius: 999px;
 }
 .hero-badges li::before {
@@ -311,11 +340,11 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 
 /* ---------- key divider ---------- */
 .key-divider {
-  height: 22px;
+  height: 26px;
   background-image: url("greek-key.svg");
   background-repeat: repeat-x;
   background-position: left center;
-  background-size: 22px 22px;
+  background-size: 78px 26px;
   background-color: var(--navy);
 }
 
@@ -325,9 +354,11 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 32px;
   margin-top: 44px;
+  align-items: stretch;
 }
 .service-card {
   background: #fff;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--marble-dark);
   border-top: 4px solid var(--gold);
   border-radius: var(--radius);
@@ -335,16 +366,32 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   box-shadow: var(--shadow);
 }
 .service-icon { width: 40px; margin-bottom: 16px; }
+.service-card h3 { margin-bottom: 4px; }
+.service-tagline {
+  margin: 0 0 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--gold-deep);
+}
+.service-note {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--marble-dark);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.service-note strong { color: var(--navy); font-weight: 600; }
 .service-list {
   margin: 16px 0 0;
   padding-left: 20px;
-  color: #4b5160;
+  color: var(--muted);
 }
 .service-list li { margin-bottom: 6px; }
 .services-note {
   text-align: center;
   margin-top: 40px;
-  color: #4b5160;
+  color: var(--muted);
 }
 .services-note a { color: var(--terracotta); font-weight: 600; text-decoration: underline; }
 
@@ -358,12 +405,13 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .gallery-item { margin: 0; }
 .gallery-placeholder {
   aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
   background: repeating-linear-gradient(
     45deg,
     var(--marble-dark),
     var(--marble-dark) 12px,
-    #ded4b8 12px,
-    #ded4b8 24px
+    #d3e3f1 12px,
+    #d3e3f1 24px
   );
   border: 2px dashed var(--gold);
   border-radius: var(--radius);
@@ -379,7 +427,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .gallery-item figcaption {
   margin-top: 10px;
   font-size: 0.9rem;
-  color: #4b5160;
+  color: var(--muted);
   text-align: center;
 }
 
@@ -426,7 +474,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   margin-top: 40px;
 }
 .testimonial {
-  background: rgba(245,240,230,0.06);
+  background: rgba(242,247,252,0.08);
   border-left: 3px solid var(--gold-bright);
   padding: 24px;
   margin: 0;
@@ -436,17 +484,18 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .testimonial cite { font-style: normal; color: var(--gold-bright); font-size: 0.9rem; }
 
 /* ---------- quote form ---------- */
-.quote { background: #fff; }
+.quote { background: var(--marble); }
 .quote-inner {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 48px;
   align-items: flex-start;
 }
-.quote-intro p { color: #4b5160; }
+.quote-intro p { color: var(--muted); }
 .quote-intro a { color: var(--terracotta); font-weight: 600; text-decoration: underline; }
 .quote-form {
-  background: var(--marble);
+  background: var(--panel);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--marble-dark);
   border-top: 4px solid var(--gold);
   border-radius: var(--radius);
@@ -472,7 +521,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .quote-form textarea {
   width: 100%;
   padding: 11px 12px;
-  border: 1px solid #cfc6ac;
+  border: 1px solid #c3d6e8;
   border-radius: var(--radius);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -487,7 +536,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 }
 .form-note {
   font-size: 0.82rem;
-  color: #5c6370;
+  color: var(--muted-soft);
   margin: 4px 0 20px;
 }
 .form-status {
@@ -495,8 +544,8 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   font-weight: 600;
   min-height: 1.2em;
 }
-.form-status.is-error { color: #b3261e; }
-.form-status.is-success { color: #2e6b3e; }
+.form-status.is-error { color: #a8261d; }
+.form-status.is-success { color: #256b3a; }
 
 /* ---------- footer ---------- */
 .site-footer { background: var(--navy); color: var(--marble-dark); padding-top: 56px; }
@@ -505,12 +554,12 @@ h3 { font-size: 1.25rem; font-weight: 700; }
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 32px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(245,240,230,0.15);
+  border-bottom: 1px solid rgba(242,247,252,0.15);
 }
 .footer-brand { display: flex; flex-direction: column; gap: 8px; }
 .footer-brand .brand-icon-light { width: 26px; filter: invert(1) sepia(1) saturate(3) hue-rotate(0deg); margin-bottom: 4px; }
 
-.footer-brand p { color: #a9b0be; font-size: 0.9rem; }
+.footer-brand p { color: var(--muted-dark); font-size: 0.9rem; }
 .footer-col h3 {
   color: var(--gold-bright);
   font-family: var(--font-body);
@@ -537,7 +586,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 .footer-bottom {
   padding: 20px 24px 28px;
   font-size: 0.82rem;
-  color: #939cad;
+  color: var(--muted-dark-soft);
   text-align: center;
 }
 
@@ -563,10 +612,13 @@ h3 { font-size: 1.25rem; font-weight: 700; }
     display: none;
   }
   .main-nav ul.is-open { display: flex; }
-  .main-nav li { width: 100%; padding: 10px 0; border-bottom: 1px solid rgba(245,240,230,0.1); }
+  .main-nav li { width: 100%; padding: 10px 0; border-bottom: 1px solid rgba(242,247,252,0.1); }
   .main-nav .nav-cta { display: inline-block; margin-top: 8px; }
   .nav-toggle { display: flex; }
   .header-phone span { display: none; }
+  /* two bare handset icons are indistinguishable, so on small screens keep
+     only the office line here - the cell is in the quote section and footer */
+  .header-phone-cell { display: none; }
   .brand-logo { height: 44px; padding: 4px 8px; }
 }
 

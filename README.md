@@ -11,7 +11,8 @@ with their details pre-filled, addressed to the business email.
 
 | Detail | Value |
 |---|---|
-| Phone | (701) 970-9115 (`tel:+17019709115`) |
+| Office phone | (701) 936-7886 (`tel:+17019367886`) |
+| Cell phone | (701) 970-9115 (`tel:+17019709115`) |
 | Email | paintseidonllc@gmail.com |
 | Service area | Fargo, ND · Moorhead, MN · surrounding areas |
 | Trading since | 2010 |
@@ -126,22 +127,37 @@ landing on the configured branch.
 
 ## Design notes
 
-Colours are defined once as custom properties at the top of
-`css/style.css`. Two of them are contrast-sensitive:
+Colours are defined once as custom properties at the top of `style.css`.
+The palette is a bright, cool one: near-white page grounds and lighter
+blues, with gold accents.
 
-- `--gold-bright` (#d4af37) is for text on **dark** backgrounds only.
+Three of the tokens are contrast-sensitive and not interchangeable:
+
+- `--gold-bright` (#e8c765) is for text on **dark** backgrounds only.
 - `--gold-deep` (#7a5f10) is for text on **light** backgrounds.
-- `--gold` (#c8a24a) is decorative only — borders and rules. It is too pale
-  to use for text on the marble background (2.1:1).
+- `--gold` (#d4af37) is decorative only - borders and rules. It is too
+  pale for text on the near-white page ground.
 
-The hero has a gradient scrim (`.hero::after`) between the temple
-illustration and the copy. The illustration is drawn in near-white marble,
-so text placed over it unscrimmed drops to about 1.1:1 and becomes
-unreadable. If you change the hero artwork, keep the scrim.
+Every text/background pair on the page meets WCAG AA, verified against the
+rendered page rather than by eye. If you change a colour, re-check it.
 
-All text on the page meets WCAG AA (4.5:1) against its background.
+`--marble` is the page ground and `#fff` is used for cards, so the two are
+deliberately a shade apart - flattening them makes the service cards
+disappear.
 
-## File structure
+### Hero artwork
+
+`temple-hero.svg` is a domed rotunda over a round-arched arcade, with a
+radiant halo behind it. It is drawn largely in pure white, so the hero
+carries a gradient scrim (`.hero::after`) between the artwork and the copy;
+without it the text drops to about 1.1:1 and becomes unreadable. The scrim
+is weighted towards the bottom, where the stonework actually sits. If you
+change the artwork, keep the scrim and re-check the contrast.
+
+`greek-key.svg` is the section divider - a rounded wave motif rather than
+the original square meander, to match the arcade.
+
+## File structure## File structure
 
 ```
 ├── index.html          Main site (all page content lives here)
