@@ -308,33 +308,33 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 }
 .hero-badges {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  justify-content: center;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 620px;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--gold-bright);
 }
 .hero-badges li {
-  position: relative;
-  padding: 6px 14px 6px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 7px 16px;
   background: rgba(27, 58, 95, 0.88);
   border: 1px solid rgba(232, 199, 101, 0.5);
   border-radius: 999px;
+  text-align: center;
 }
 .hero-badges li::before {
   content: "";
-  position: absolute;
-  left: 13px; top: 50%;
+  flex: none;
   width: 8px; height: 8px;
-  transform: translateY(-50%) rotate(45deg);
+  transform: rotate(45deg);
   background: var(--gold-bright);
 }
 
@@ -623,6 +623,7 @@ h3 { font-size: 1.25rem; font-weight: 700; }
 }
 
 @media (max-width: 560px) {
+  .hero-badges { grid-template-columns: 1fr; max-width: 340px; }
   .form-row-half { grid-template-columns: 1fr; }
   .about-points { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
